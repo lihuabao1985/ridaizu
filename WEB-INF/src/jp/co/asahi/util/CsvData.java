@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-import jp.co.asahi.dao.impl.OrderDetailDao;
+import jp.co.asahi.dao.db.OrderDetailDao;
 import jp.co.asahi.model.OrderDetail;
 
 import com.google.common.base.Strings;

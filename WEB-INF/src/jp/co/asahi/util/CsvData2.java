@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.sql.Timestamp;
 import java.util.Arrays;
 
-import jp.co.asahi.dao.impl.OrderDao;
+import jp.co.asahi.dao.db.OrderDao;
 import jp.co.asahi.model.Order;
 
 import com.google.common.base.Strings;

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_orderDetail" layout="block" rendered="#{not empty orderDetailBean.lazyModel}">
+
+	<p:dataTable id="orderDetailTable" var="orderDetail" value="#{orderDetailBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{orderDetailBean.selectedOrderDetailList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+	    <p:column headerText="订单编号" sortBy="dingdan_bianhao" style="width:50px;">
+	        <h:outputText value="#{orderDetail.dingdanBianhao}" />
+	    </p:column>
+
+	    <p:column headerText="标题" sortBy="biaoti" style="width:175px;">
+	        <h:outputText value="#{orderDetail.biaoti}" />
+	    </p:column>
+
+	    <p:column headerText="价格" sortBy="jiage" style="width:10px;">
+	        <h:outputText value="#{orderDetail.jiage}" />
+	    </p:column>
+
+	    <p:column headerText="数量" sortBy="goumai_shuliang" style="width:10px;">
+	        <h:outputText value="#{orderDetail.goumaiShuliang}" />
+	    </p:column>
+
+	    <p:column headerText="商品属性" sortBy="shangpin_shuxing" style="width:20px;">
+	        <h:outputText value="#{orderDetail.shangpinShuxing}" />
+	    </p:column>
+
+	    <p:column headerText="备注" sortBy="beizhu" style="width:20px;">
+	        <h:outputText value="#{orderDetail.beizhu}" />
+	    </p:column>
+
+	    <p:column headerText="订单状态" sortBy="dingdan_zhuangtai" style="width:20px;">
+	        <h:outputText value="#{orderDetail.dingdanZhuangtai}" />
+	    </p:column>
+
+	    <p:column headerText="外部系统编号" sortBy="waibu_xitong_bianhao" style="width:60px;">
+	        <h:outputText value="#{orderDetail.waibuXitongBianhao}" />
+	    </p:column>
+
+	    <p:column headerText="商家编码" sortBy="shangjia_bianma" style="width:60px;">
+	        <h:outputText value="#{orderDetail.shangjiaBianma}" />
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>
