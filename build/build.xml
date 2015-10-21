@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================
+     2008/08/04 15:02:03
+
+     project    sso_server
+     description   SSO Server
+
+     tsushima
+     ====================================================================== -->
+<project name="sso_server" default="archive">
+
+	<!-- 顧客ID -->
+	<property name="customer_id" value="ridaizu-data" />
+
+	<!-- CloudGateドメイン -->
+	<property name="server_domain" value="secure.isr.co.jp"/>
+
+	<!-- DB IP -->
+	<property name="db_ip" value="192.168.20.10"/>
+
+	<!-- bin/ ディレクトリ削除 -->
+	<target name="clean">
+		<delete dir="bin"/>
+	</target>
+
+	<!-- bin/ ディレクトリ生成 -->
+	<target name="init" depends="clean">
+		<mkdir dir="bin"/>
+	</target>
+
+	<!-- ファイルコピー処理 -->
+	<target name="copy" depends="init">
+
+		<!-- コンパイルデータコピー -->
+		<copy todir="./bin">
+			<fileset dir=".." excludes="**/.**/,**/build/,**/src/,**/work/,**/customer_profile/" />
+		</copy>
+
+		<!-- 必要に応じて文字列を入れ替える -->
+		<!-- log4j.xml -->
+		<replace dir="./bin/WEB-INF/classes" token="customer_id" value="${customer_id}" encoding="UTF-8">
+			<include name="log4j.xml" />
+		</replace>
+
+		<!-- saml_config.properties -->
+		<replace dir="./bin/WEB-INF/classes" token="customer_id" value="${customer_id}" encoding="UTF-8">
+			<include name="saml_config.properties" />
+		</replace>
+		<replace dir="./bin/WEB-INF/classes" token="server_domain" value="${server_domain}" encoding="UTF-8">
+			<include name="saml_config.properties" />
+		</replace>
+
+		<!-- context.xml -->
+		<replace dir="./bin/META-INF" token="customer_id" value="${customer_id}" encoding="UTF-8">
+			<include name="context.xml" />
+		</replace>
+		<replace dir="./bin/META-INF" token="db_ip" value="${db_ip}" encoding="UTF-8">
+			<include name="context.xml" />
+		</replace>
+
+		<!-- 設定ファイルコピー -->
+		<copy todir="./bin/WEB-INF/classes" overwrite="true">
+			<fileset file="../WEB-INF/customer_profile/${customer_id}/log4j.xml" />
+		</copy>
+
+		<!-- DB接続ファイルコピー -->
+		<copy todir="./bin/META-INF" overwrite="true">
+			<fileset file="../WEB-INF/customer_profile/${customer_id}/context.xml" />
+		</copy>
+
+		<!-- ロゴファイルコピー -->
+		<copy todir="./bin/img" overwrite="true">
+			<fileset file="../WEB-INF/customer_profile/${customer_id}/system_logo.jpg" />
+		</copy>
+
+	</target>
+
+	<target name="archive" depends="copy">
+		<jar destfile="./war/${customer_id}.war" basedir="bin/" />
+	</target>
+
+</project>

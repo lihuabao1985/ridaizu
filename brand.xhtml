@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>品牌信息</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form id="form_input_data_update">
+		<p:panelGrid id="panelGridWareHouse" style="width:100%">
+			<p:row rendered="#{not empty brandForm.id}">
+				<p:column>品牌ID:</p:column>
+				<p:column>
+					<h:outputText value="#{brandForm.id}" />
+					<h:inputHidden id="id" value="#{brandForm.id}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌名:</p:column>
+				<p:column>
+					<p:inputText id="name" value="#{brandForm.name}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌简介:</p:column>
+				<p:column>
+					<p:inputTextarea rows="" cols="" id="summary" value="#{brandForm.summary}"></p:inputTextarea>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌详细介绍:</p:column>
+				<p:column>
+					<p:inputTextarea rows="" cols="" id="detail" value="#{brandForm.detail}"></p:inputTextarea>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌主页:</p:column>
+				<p:column>
+					<p:inputText id="homepage" value="#{brandForm.homepage}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌焦点图链接:</p:column>
+				<p:column>
+					<p:inputText id="photoUrl" value="#{brandForm.photoUrl}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>品牌缩略图链接:</p:column>
+				<p:column>
+					<p:inputText id="thumbnailsUrl" value="#{brandForm.thumbnailsUrl}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>删除标识:</p:column>
+				<p:column>
+					<p:selectBooleanCheckbox id="delFlg" value="#{brandForm.delFlg}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+			        <p:commandButton value="登录" actionListener="#{brandBean.registerBrand}" rendered="#{empty brandForm.id}" />
+					<p:commandButton value="更新" id="btn_brand_update" actionListener="#{brandBean.updateBrand}" rendered="#{not empty brandForm.id}"/>
+				</p:column>
+			</p:row>
+
+		</p:panelGrid>
+	</h:form>
+</ui:composition>

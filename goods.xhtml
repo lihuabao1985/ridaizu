@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>商品信息</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form id="form_input_data_update">
+		<p:panelGrid id="panelGridWareHouse" style="width:100%">
+			<p:row rendered="#{not empty goodsForm.id}">
+				<p:column>商品ID:</p:column>
+				<p:column>
+					<h:outputText value="#{goodsForm.id}" />
+					<h:inputHidden id="id" value="#{goodsForm.id}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品名:</p:column>
+				<p:column>
+					<p:inputText id="name" value="#{goodsForm.name}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>淘宝商品名:</p:column>
+				<p:column>
+					<p:inputText id="taobaoName" value="#{goodsForm.taobaoName}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品编码:</p:column>
+				<p:column>
+					<p:inputText id="goodsCode" value="#{goodsForm.goodsCode}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>条形码:</p:column>
+				<p:column>
+					<p:inputText id="barcode" value="#{goodsForm.barcode}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品类型ID:</p:column>
+				<p:column>
+					<p:inputText id="goodsTypeId" value="#{goodsForm.goodsTypeId}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品规格:</p:column>
+				<p:column>
+					<p:inputText id="capacity" value="#{goodsForm.capacity}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品重量:</p:column>
+				<p:column>
+					<p:inputText id="weight" value="#{goodsForm.weight}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>批发价格:</p:column>
+				<p:column>
+					<p:inputText id="wholesalePrice" value="#{goodsForm.wholesalePrice}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>市场价格:</p:column>
+				<p:column>
+					<p:inputText id="price" value="#{goodsForm.price}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>售价:</p:column>
+				<p:column>
+					<p:inputText id="salesPrice" value="#{goodsForm.salesPrice}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品简介:</p:column>
+				<p:column>
+					<p:inputTextarea rows="" cols="" id="summary" value="#{goodsForm.summary}"></p:inputTextarea>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品详细:</p:column>
+				<p:column>
+					<p:inputTextarea rows="" cols="" id="detail" value="#{goodsForm.detail}"></p:inputTextarea>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品成分:</p:column>
+				<p:column>
+					<p:inputText id="ingredient" value="#{goodsForm.ingredient}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>效果:</p:column>
+				<p:column>
+					<p:inputText id="effect" value="#{goodsForm.effect}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>年龄段:</p:column>
+				<p:column>
+					<p:inputText id="suitAgeId" value="#{goodsForm.suitAgeId}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>使用方法:</p:column>
+				<p:column>
+					<p:inputText id="instructions" value="#{goodsForm.instructions}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>注意事项:</p:column>
+				<p:column>
+					<p:inputText id="precautions" value="#{goodsForm.precautions}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品链接:</p:column>
+				<p:column>
+					<p:inputText id="goodsUrl" value="#{goodsForm.goodsUrl}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>图片链接:</p:column>
+				<p:column>
+					<p:inputText id="photoUrl" value="#{goodsForm.photoUrl}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>缩略图链接:</p:column>
+				<p:column>
+					<p:inputText id="thumbnailsUrl" value="#{goodsForm.thumbnailsUrl}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>删除标识:</p:column>
+				<p:column>
+					<p:selectBooleanCheckbox id="delFlg" value="#{goodsForm.delFlg}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+			        <p:commandButton value="登录" actionListener="#{goodsBean.registerGoods}" rendered="#{empty goodsForm.id}" />
+					<p:commandButton value="更新" id="btn_goods_update" actionListener="#{goodsBean.updateGoods}" rendered="#{not empty goodsForm.id}"/>
+				</p:column>
+			</p:row>
+
+		</p:panelGrid>
+	</h:form>
+</ui:composition>

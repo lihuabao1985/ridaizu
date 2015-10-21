@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid style="margin-top:20px">
+		<p:row>
+	        <p:column>
+ 				在途日期
+	        </p:column>
+	        <p:column>
+				<p:calendar value="#{zaituSearch.startZaituDate}" pattern="yyyy-MM-dd" />
+				<p:outputLabel>～</p:outputLabel>
+				<p:calendar value="#{zaituSearch.endZaituDate}" pattern="yyyy-MM-dd" />
+	        </p:column>
+	    </p:row>
+		<p:row>
+	        <p:column colspan="2">
+ 				<p:commandButton value="登录" id="btn_zaitu_register" actionListener="#{zaituBean.viewRegisterZaitu}" ajax="true">
+ 					<p:ajax event="dialogReturn" listener="#{zaituBean.registerZaituResult}" update="zaituTable" />
+ 				</p:commandButton>
+
+	            <p:commandButton value="削除" actionListener="#{zaituBean.deleteZaitu}" update="zaituTable" >
+	            </p:commandButton>
+
+ 				<p:commandButton value="查询" id="btn_zaitu_search" actionListener="#{zaituBean.searchZaituSync}"
+ 				ajax="false" icon="ui-icon-search" validateClient="true"/>
+	        </p:column>
+	    </p:row>
+	</p:panelGrid>
+
+	<p:separator />
+
+</ui:composition>

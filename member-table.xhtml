@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_member" layout="block" rendered="#{not empty memberBean.lazyModel}">
+
+	<p:dataTable id="memberTable" var="member" value="#{memberBean.lazyModel}" rows="20" paginator="true" lazy="true" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{memberBean.viewMember(member)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{memberBean.updateMemberResult}" update="memberTable" />
+			</p:commandButton>
+	    </p:column>
+
+	    <p:column headerText="ID" sortBy="user_id" style="width:20px;">
+	        <h:outputText value="#{member.userId}" />
+	    </p:column>
+
+	    <p:column headerText="旺旺号" sortBy="wangwang_no" style="width:75px;">
+	        <h:outputText value="#{member.wangwangNo}" />
+	    </p:column>
+
+	    <p:column headerText="会员等级" sortBy="grade" style="width:40px;">
+	        <h:outputText value="#{member.grade}" />
+	    </p:column>
+
+	    <p:column headerText="手机" sortBy="mobile" style="width:60px;">
+	        <h:outputText value="#{member.mobile}" />
+	    </p:column>
+
+	    <p:column headerText="省份" sortBy="province" style="width:30px;">
+	        <h:outputText value="#{member.province}" />
+	    </p:column>
+
+	    <p:column headerText="市区" sortBy="city" style="width:30px;">
+	        <h:outputText value="#{member.city}" />
+	    </p:column>
+<!--
+	    <p:column headerText="地址" sortBy="address" style="width:200px;">
+	        <h:outputText value="#{member.address}" />
+	    </p:column>
+ -->
+	    <p:column headerText="订单总数" sortBy="trade_total" style="width:30px;">
+	        <h:outputText value="#{member.tradeTotal}" />
+	    </p:column>
+
+	    <p:column headerText="总金额" sortBy="turnover" style="width:30px;">
+	        <h:outputText value="#{member.turnover}" />
+	    </p:column>
+
+	    <p:column headerText="商品总数" sortBy="goods_count" style="width:30px;">
+	        <h:outputText value="#{member.goodsCount}" />
+	    </p:column>
+
+	    <p:column headerText="最后交易时间" sortBy="last_trade_date" style="width:60px;">
+	        <h:outputText value="#{member.lastTradeDate}" />
+	    </p:column>
+
+	    <p:column headerText="优惠券" sortBy="service_ticket" style="width:30px;">
+	        <h:outputText value="#{member.serviceTicket}" />
+	    </p:column>
+
+	    <p:column headerText="已使用优惠券" sortBy="use_service_ticket" style="width:30px;">
+	        <h:outputText value="#{member.useServiceTicket}" />
+	    </p:column>
+
+	    <p:column headerText="剩余优惠券" style="width:30px;">
+	        <h:outputText value="#{member.afterServiceTicket}" />
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

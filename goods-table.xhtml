@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_goods" layout="block" rendered="#{not empty goodsBean.lazyModel}">
+
+	<p:dataTable id="goodsTable" var="goods" value="#{goodsBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{goodsBean.selectedGoodsList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{goods.id}" />
+	    </p:column>
+
+	    <p:column headerText="商品名" sortBy="name" style="width:100px;">
+	        <h:outputText value="#{goods.name}" />
+	    </p:column>
+
+	    <p:column headerText="淘宝商品名" sortBy="taobao_name" style="width:100px;">
+	        <h:outputText value="#{goods.taobaoName}" />
+	    </p:column>
+
+	    <p:column headerText="商品编码" sortBy="goods_code" style="width:50px;">
+	        <h:outputText value="#{goods.goodsCode}" />
+	    </p:column>
+
+	    <p:column headerText="条形码" sortBy="barcode" style="width:50px;">
+	        <h:outputText value="#{goods.barcode}" />
+	    </p:column>
+
+	    <p:column headerText="商品类型" sortBy="goods_type_id" style="width:30px;">
+	        <h:outputText value="#{goods.goodsTypeId}" />
+	    </p:column>
+
+	    <p:column headerText="商品规格" sortBy="capacity" style="width:30px;">
+	        <h:outputText value="#{goods.capacity}" />
+	    </p:column>
+
+	    <p:column headerText="商品重量" sortBy="weight" style="width:30px;">
+	        <h:outputText value="#{goods.weight}" />
+	    </p:column>
+
+	    <p:column headerText="商品简介" sortBy="summary" style="width:150px;">
+	        <h:outputText value="#{goods.summary}" />
+	    </p:column>
+
+	    <p:column headerText="删除标识" sortBy="del_flg" style="width:30px;">
+	        <h:outputText value="#{goods.delFlg}" />
+	    </p:column>
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{goodsBean.viewUpdateGoods(goods)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{goodsBean.updateGoodsResult}" update="goodsTable" />
+			</p:commandButton>
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

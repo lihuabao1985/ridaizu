@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================
+	Create date  :  2010/08/18
+	Update date  :  yyyy/mm/dd
+
+	auther    :  chenbp
+	====================================================================== -->
+<project name="sso_server" default="all_build">
+
+	<target name="all_build" >
+		<ant antfile="kccs_build.xml">
+			<property name="customer_id" value="ridaizu-taobao-admin"/>
+		</ant>
+	</target>
+
+
+</project>

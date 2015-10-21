@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_zaituDetail" layout="block" rendered="#{not empty zaituDetailBean.lazyModel}">
+
+	<p:dataTable id="zaituDetailTable" var="zaituDetail" value="#{zaituDetailBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{zaituDetailBean.selectedZaituDetailList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{zaituDetail.id}" />
+	    </p:column>
+
+	    <p:column headerText="在途日期" sortBy="zaitu_date" style="width:75px;">
+	        <h:outputText value="#{zaituDetail.zaituDateString}" />
+	    </p:column>
+
+	    <p:column headerText="商品条形码" sortBy="goods_barcode" style="width:75px;">
+	        <h:outputText value="#{zaituDetail.goodsBarcode}" />
+	    </p:column>
+
+	    <p:column headerText="商品数量" sortBy="count" style="width:75px;">
+	        <h:outputText value="#{zaituDetail.count}" />
+	    </p:column>
+
+	    <p:column headerText="进价" sortBy="price" style="width:75px;">
+	        <h:outputText value="#{zaituDetail.price}" />
+	    </p:column>
+
+	    <p:column headerText="备注" sortBy="beizhu" style="width:75px;">
+	        <h:outputText value="#{zaituDetail.beizhu}" />
+	    </p:column>
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{zaituDetailBean.viewUpdateZaituDetail(zaituDetail)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{zaituDetailBean.updateZaituDetailResult}" update="zaituDetailTable" />
+			</p:commandButton>
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

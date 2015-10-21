@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid style="margin-top:20px">
+		<p:row>
+	        <p:column>
+ 				REF_NO
+	        </p:column>
+	        <p:column colspan="3">
+				<p:inputText value="#{arrivalNoticeSearch.refNo}" size="16" />
+	        </p:column>
+	        <p:column>
+ 				hblNo
+	        </p:column>
+	        <p:column>
+	            <p:inputText id="hblNo" value="#{arrivalNoticeSearch.hblNo}" size="12" />
+	        </p:column>
+	        <p:column>
+ 				oblNo
+	        </p:column>
+	        <p:column>
+	            <p:inputText id="oblNo" value="#{arrivalNoticeSearch.oblNo}" size="12" />
+	        </p:column>
+	    </p:row>
+		<p:row>
+	        <p:column>
+ 				登録時間
+	        </p:column>
+	        <p:column colspan="3">
+				<p:inputText id="startRegDateYear" value="#{arrivalNoticeSearch.startRegDateYear}" size="4" maxlength="4" />
+				<p:outputLabel value="年" />
+				<p:inputText id="startRegDateMonth" value="#{arrivalNoticeSearch.startRegDateMonth}" size="4" maxlength="4" />
+				<p:outputLabel value="月" />
+				<p:outputLabel value="～" />
+				<p:inputText id="endRegDate" value="#{arrivalNoticeSearch.endRegDateYear}" size="4" maxlength="4" />
+				<p:outputLabel value="年" />
+				<p:inputText id="endRegDateMonth" value="#{arrivalNoticeSearch.endRegDateMonth}" size="4" maxlength="4" />
+				<p:outputLabel value="月" />
+	        </p:column>
+	        <p:column>
+ 				ETA
+	        </p:column>
+	        <p:column colspan="3">
+				<p:inputText id="startEtaYear" value="#{arrivalNoticeSearch.startEtaYear}" size="4" maxlength="4" />
+				<p:outputLabel value="年" />
+				<p:inputText id="startEtaMonth" value="#{arrivalNoticeSearch.startEtaMonth}" size="4" maxlength="4" />
+				<p:outputLabel value="月" />
+				<p:outputLabel value="～" />
+				<p:inputText id="endEtaYear" value="#{arrivalNoticeSearch.endEtaYear}" size="4" maxlength="4" />
+				<p:outputLabel value="年" />
+				<p:inputText id="endEtaMonth" value="#{arrivalNoticeSearch.endEtaMonth}" size="2" maxlength="2" />
+				<p:outputLabel value="月" />
+	        </p:column>
+	    </p:row>
+		<p:row>
+	        <p:column colspan="8">
+ 				<p:commandButton value="查询" id="btn_arrivalNotice_search" actionListener="#{arrivalNoticeBean.searchArrivalNoticeSync}"
+ 				ajax="false" icon="ui-icon-search" validateClient="true"/>
+	        </p:column>
+	    </p:row>
+	</p:panelGrid>
+
+	<p:separator />
+
+</ui:composition>

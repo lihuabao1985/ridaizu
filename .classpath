@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="WEB-INF/src"/>
+	<classpathentry kind="src" output="work" path="work"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/el-api-2.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/el-impl-2.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jsp-api-2.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/guava-17.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/javax.inject-1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mysql-connector-java-5.1.20.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jdom-2.0.2.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jsf-api-2.2.8-02.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jsf-impl-2.2.8-02.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/primefaces-5.0.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/saml-client.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jxl-2.6.12.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/poi-3.12.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

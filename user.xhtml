@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>主单信息</title>
+		<style type="text/css">
+		.ui-widget {
+			font-size: 90%;
+		}
+		</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form id="form_input_data_update">
+		<p:tabView>
+			<p:tab title="基本入力">
+				<ui:include src="arrival-notice-base.xhtml" />
+			</p:tab>
+			<p:tab title="貨物情況">
+				<ui:include src="arrival-notice-cargo.xhtml" />
+			</p:tab>
+			<p:tab title="収費計算">
+				<ui:include src="arrival-notice-fee.xhtml" />
+			</p:tab>
+		</p:tabView>
+	</h:form>
+</ui:composition>

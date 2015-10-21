@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="shortcut icon" href="images/icon.png" type="image/icon" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><ui:insert name="title" /></title>
+	<script type="text/javascript" src="js/functions.js" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+</h:head>
+<h:body>
+	<p:panel id="layoutPanel" styleClass="layout-panel" style="border: none; padding: 0">
+		<h:form>
+			<table style="width: 100%">
+				<tr>
+					<td class="layout-cell">
+
+						<div id="header">
+							<p style="font-size: 36px;margin: 15px 15px 0px 0px">
+									日代族管理系统
+							</p>
+						</div>
+
+						<ui:insert name="navi" />
+					</td>
+				</tr>
+				<tr>
+					<td class="layout-cell"><ui:insert name="content" /></td>
+				</tr>
+			</table>
+		</h:form>
+	</p:panel>
+</h:body>
+</html>

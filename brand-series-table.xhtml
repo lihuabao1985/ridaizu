@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_brandSeries" layout="block" rendered="#{not empty brandSeriesBean.lazyModel}">
+
+	<p:dataTable id="brandSeriesTable" var="brandSeries" value="#{brandSeriesBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{brandSeriesBean.selectedBrandSeriesList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{brandSeries.id}" />
+	    </p:column>
+
+	    <p:column headerText="品牌名" sortBy="name" style="width:75px;">
+	        <h:outputText value="#{brandSeries.name}" />
+	    </p:column>
+
+	    <p:column headerText="品牌简介" sortBy="summary" style="width:150px;">
+	        <h:outputText value="#{brandSeries.summary}" />
+	    </p:column>
+
+	    <p:column headerText="品牌主页" sortBy="homepage" style="width:75px;">
+	        <h:outputText value="#{brandSeries.homepage}" />
+	    </p:column>
+
+	    <p:column headerText="删除标识" sortBy="del_flg" style="width:30px;">
+	        <h:outputText value="#{brandSeries.delFlg}" />
+	    </p:column>
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{brandSeriesBean.viewUpdateBrandSeries(brandSeries)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{brandSeriesBean.updateBrandSeriesResult}" update="brandSeriesTable" />
+			</p:commandButton>
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

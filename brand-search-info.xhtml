@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid style="margin-top:20px">
+		<p:row>
+	        <p:column>
+ 				品牌名
+	        </p:column>
+	        <p:column>
+	        	<p:inputText id="name" value="#{brandForm.name}" size="12" />
+	        </p:column>
+	    </p:row>
+		<p:row>
+	        <p:column colspan="2">
+ 				<p:commandButton value="登录" id="btn_brand_register" actionListener="#{brandBean.viewRegisterBrand}" ajax="true">
+ 					<p:ajax event="dialogReturn" listener="#{brandBean.registerBrandResult}" update="brandTable" />
+ 				</p:commandButton>
+
+	            <p:commandButton value="削除" actionListener="#{brandBean.deleteBrand}" update="brandTable" >
+	            </p:commandButton>
+
+ 				<p:commandButton value="查询" id="btn_brand_search" actionListener="#{brandBean.searchBrandSync}"
+ 				ajax="false" icon="ui-icon-search" validateClient="true"/>
+	        </p:column>
+	    </p:row>
+	</p:panelGrid>
+
+	<p:separator />
+
+</ui:composition>

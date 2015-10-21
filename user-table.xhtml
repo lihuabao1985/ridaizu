@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_arrivalNotice" layout="block" rendered="#{not empty arrivalNoticeBean.lazyModel}">
+
+	<p:dataTable id="arrivalNoticeTable" var="arrivalNotice" value="#{arrivalNoticeBean.lazyModel}" rows="20" paginator="true" lazy="true" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="View" actionListener="#{arrivalNoticeBean.viewArrivalNotice(arrivalNotice)}" ajax="true" icon="ui-icon-search" />
+	    </p:column>
+
+	    <p:column headerText="refNo" sortBy="REF_NO" style="width:135px;">
+	        <h:outputText value="#{arrivalNotice.refNo}" />
+	    </p:column>
+
+	    <p:column headerText="VESSEL" sortBy="VESSEL" style="width:120px;">
+	        <h:outputText value="#{arrivalNotice.vessel}" />
+	    </p:column>
+
+	    <p:column headerText="VOY" sortBy="VOY" style="width:45px;">
+	        <h:outputText value="#{arrivalNotice.voy}" />
+	    </p:column>
+
+	    <p:column headerText="hblNo" sortBy="H_BLNO" style="width:130px;">
+	        <h:outputText value="#{arrivalNotice.hblNo}" />
+	    </p:column>
+
+	    <p:column headerText="oblNo" sortBy="O_BLNO" style="width:155px;">
+	        <h:outputText value="#{arrivalNotice.oblNo}" />
+	    </p:column>
+
+	    <p:column headerText="ETA" sortBy="ETA" style="width:75px;">
+	        <h:outputText value="#{arrivalNotice.etaStr}" />
+	    </p:column>
+
+	    <p:column headerText="TYPE" sortBy="TRANSPORT_TYPE" style="width:30px;">
+	        <h:outputText value="#{arrivalNotice.transportType}" />
+	    </p:column>
+
+	    <p:column headerText="CNEECOR" sortBy="CNEECOR">
+	        <h:outputText value="#{arrivalNotice.cneecor}" />
+	    </p:column>
+
+	    <p:column headerText="CC_PP" sortBy="PAYMENT_TYPE" style="width:120px;">
+	        <h:outputText value="#{arrivalNotice.paymentType}" />
+	    </p:column>
+
+	    <p:column headerText="TOTAL" sortBy="TOTAL" style="width:65px;">
+	        <h:outputText value="#{arrivalNotice.total}" />
+	    </p:column>
+
+	    <p:column headerText="貨物状態" sortBy="CARGO_STATUS_CODE" style="width:80px;">
+	        <h:outputText value="#{arrivalNotice.cargoStatusCode}" />
+	    </p:column>
+
+	    <p:column headerText="荷渡可能" sortBy="CARGO_STATUS_CODE" style="width:50px;">
+	        <h:outputText value="#{arrivalNotice.deliveryFlg}" />
+	    </p:column>
+
+	    <p:column headerText="登録時間" sortBy="REG_DATE" style="width:148px;">
+	        <h:outputText value="#{arrivalNotice.regDate}" />
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

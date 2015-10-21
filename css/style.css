@@ -1,0 +1,391 @@
+/*
+Copyright(C) International Systems Research Co. 2008-2009. All Rights Reserved.
+*/
+body {
+	padding-top: 0px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+h1 {
+	margin: 0px;
+	font-size: 12px;
+	padding: 4px;
+	font-weight: bold;
+	border: 1px solid #A4C0E2;
+	background-color: #E6ECF6;
+}
+
+h2 {
+	font-size: 20px;
+	color: black;
+	border-bottom: 1px solid #A4C0E2;
+}
+
+input {
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+}
+
+td,th,p,div {
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+}
+
+table.list {
+	border-collapse: collapse;
+}
+
+table.list th {
+	padding: 4px;
+	border-color: #000000 gray;
+	border-style: solid;
+	border-width: 1px 0px 1px 0px;
+	background-color: #eeeeee;
+}
+
+table.list td {
+	padding: 4px;
+	border-color: #A4C0E2 gray;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	text-align: center;
+}
+
+table.list tr:hover {
+	background-color: #A4C0E2;
+	color: #000000;
+}
+
+table.sample {
+	border-collapse: collapse;
+	width: auto;
+	margin-top: 5px
+}
+
+table.sample th {
+	border: 1px solid #ccc;
+	background: #eee;
+	padding: 2px 10px;
+	text-align: center;
+	width: auto
+}
+
+table.sample td {
+	border: 1px solid #ccc;
+	padding: 2px 10px;
+	text-align: left
+}
+
+table.sample {
+	font-style: italic
+}
+
+table.sample th {
+	color: #767676
+}
+
+table.result {
+	border-collapse: collapse;
+}
+
+table.result th {
+	padding: 4px;
+	border-color: #000000 gray;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	background-color: #eeeeee;
+}
+
+table.result td {
+	padding: 4px;
+	border-color: #000000 gray;
+	border-style: solid;
+	border-width: 0px 1px 1px 1px;
+	text-align: center;
+}
+
+.bodyclass1 {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	color: #000000;
+	background-color: #FFFFFF;
+	overflow: auto;
+}
+
+.bodyclass2 {
+	width: 100%;
+	padding-top: 0px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+.bordereddiv {
+	background-color: #F4F7FB;
+	border: 1px #A4C0E2 solid;
+	padding: 4px;
+	text-align: center;
+}
+
+.propbordereddiv {
+	padding: 4px;
+	border-bottom: 1px solid #A4C0E2;
+	border-spacing: 5px 10px;
+}
+
+.control {
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+
+.ldaptree {
+	background-color: #F4F7FB;
+	border: 1px #A4C0E2 solid;
+	width: 100%;
+	height: 100%;
+	padding: 0em;
+	overflow: auto;
+}
+
+.accountdata {
+	border: solid 0px;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em;
+	overflow: auto;
+}
+
+.error {
+	text-align: center;
+	color: red;
+}
+
+.footer {
+	text-align: center;
+}
+
+.image {
+	position: absolute;
+	width: 17;
+	height: 19;
+	border: "";
+	border-style: none;
+}
+
+.calimg {
+	position: relative;
+	background-color: #FFFFFF;
+	font-size: 16px;
+	border-width: 0px;
+	cursor: pointer;
+}
+
+.indent0 {
+	margin-left: 0px;
+	list-style-image: url(../img/triangle.gif);
+}
+.warning {
+    background: url(../img/warning.gif) no-repeat scroll 0 0 transparent;
+    padding-left: 25px;
+   	color: red;
+}
+.indent0_sel {
+	margin-left: 0px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent1 {
+	margin-left: 15px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent1_sel {
+	margin-left: 15px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent2 {
+	margin-left: 30px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent2_sel {
+	margin-left: 30px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent3 {
+	margin-left: 45px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent3_sel {
+	margin-left: 45px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent4 {
+	margin-left: 60px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent4_sel {
+	margin-left: 60px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent5 {
+	margin-left: 75px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent5_sel {
+	margin-left: 75px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+.indent6 {
+	margin-left: 90px;
+	list-style-image: url(../img/triangle.gif);
+}
+
+.indent6_sel {
+	margin-left: 90px;
+	list-style-image: url(../img/triangle_sel.gif);
+}
+
+a {
+	color: #407AB6;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a:hover {
+	color: #86AEDA;
+	text-decoration: underline;
+}
+
+input.hankaku {
+	ime-mode: disabled;
+}
+
+/* �W���{�^�� */
+.btn_normal {
+	min-height: 24px;
+	border: 1px solid #000000;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #A4C0E2;
+	cursor: pointer;
+}
+
+/* �R���g���[���̈� */
+.ac_control {
+	color: #000000;
+	border: 1px solid #A4C0E2;
+	background-color: #F4F7FB;
+}
+
+/* �y�[�W����{�^�� */
+.btn_navi {
+	height: 18px;
+	border: 0px solid #000000;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #F4F7FB;
+	cursor: pointer;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+/* �\���y�[�W */
+.disp_page {
+	height: 18px;
+	font-size: 12px;
+	background-color: #F4F7FB;
+	align: center;
+	padding-top: 5px;
+	padding-right: 2px;
+	color: #4C4C4C;
+}
+
+/* �{�^�� */
+.btn80 {
+	width: 80px;
+}
+
+.btn100 {
+	width: 100px;
+}
+
+.btn120 {
+	width: 120px;
+}
+
+.btn140 {
+	width: 140px;
+}
+
+/* �T�[�`�G���A */
+.box {
+	width: 280px;
+}
+
+/* メニューの色指定 */
+.bd {
+	background-color: #F4F7FB !important;
+	font-size: 16px !important;
+}
+
+.bd A:link {
+	color: black;
+	background-color: #F4F7FB;
+}
+
+.bd A:visited {
+	color: black;
+	background-color: #F4F7FB;
+}
+
+.bd A:active {
+	color: black;
+	background-color: #F4F7FB;
+}
+
+.bd A:hover {
+	color: black;
+	background-color: #A4C0E2;
+	text-decoration: none;
+}
+
+/*
+.ui-selectonemenu{
+     width: 100% !important;
+}
+.ui-selectonemenu-label{
+     width: 100% !important;
+}
+.ui-selectonemenu-filter-container {
+    width: 98% !important;
+}
+*/

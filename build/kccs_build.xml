@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================
+	Create date  :  2010/08/18
+	Update date  :  yyyy/mm/dd
+
+	auther    :  chenbp
+	====================================================================== -->
+<project name="sso_server" default="all_build">
+
+	<!-- DB_IP注意!! -->
+	<!-- 顧客ID -->
+	<property name="customer_id" value="customer_id"/>
+	<property name="server_domain" value="cloudgate.jp"/>
+
+	<!-- ファイル読み込み -->
+		<loadfile property="check" srcfile="db1_check.properties" />
+		<!-- 顧客IDチェック -->
+		<condition property="check_customer">
+			<contains string="${check}" substring=",${customer_id},"/>
+		</condition>
+	    <echo message="kccs ビルド 顧客：${customer_id}" />
+		<echo message="${check_customer}" />
+
+		<!-- db1_check.propertiesに顧客情報有り -->
+		<target name="check_true" if="check_customer">
+			<property name="db_ip" value="192.168.20.10" />
+			<echo message="${db_ip}" />
+		</target>
+
+		<!-- db1_check.propertiesに顧客情報無し -->
+		<target name="check_false" unless="check_customer">
+			<property name="db_ip" value="192.168.20.40" />
+			<echo message="${db_ip}" />
+		</target>
+
+	<target name="all_build" depends="check_true,check_false">
+		<ant antfile="build.xml">
+			<property name="db_ip" value="${db_ip}"/>
+		</ant>
+	</target>
+
+
+</project>

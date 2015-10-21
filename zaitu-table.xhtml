@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_zaitu" layout="block" rendered="#{not empty zaituBean.lazyModel}">
+
+	<p:dataTable id="zaituTable" var="zaitu" value="#{zaituBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{zaituBean.selectedZaituList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{zaitu.id}" />
+	    </p:column>
+
+	    <p:column headerText="在途日期" sortBy="zaitu_date" style="width:75px;">
+	        <h:outputText value="#{zaitu.zaituDateString}" />
+	    </p:column>
+
+	    <p:column headerText="商品总数" sortBy="goods_total_count" style="width:75px;">
+	        <h:outputText value="#{zaitu.goodsTotalCount}" />
+	    </p:column>
+
+	    <p:column headerText="商品总价" sortBy="goods_total_price" style="width:75px;">
+	        <h:outputText value="#{zaitu.goodsTotalPrice}" />
+	    </p:column>
+
+	    <p:column headerText="运费总价" sortBy="freight_total" style="width:75px;">
+	        <h:outputText value="#{zaitu.freightTotal}" />
+	    </p:column>
+
+	    <p:column headerText="到货标识" sortBy="daohuo_flg" style="width:75px;">
+	        <h:outputText value="#{zaitu.daohuoFlg}" />
+	    </p:column>
+
+	    <p:column headerText="到货日期" sortBy="daohuo_date" style="width:75px;">
+	        <h:outputText value="#{zaitu.daohuoDateString}" />
+	    </p:column>
+
+	    <p:column headerText="备注" sortBy="beizhu" style="width:75px;">
+	        <h:outputText value="#{zaitu.beizhu}" />
+	    </p:column>
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{zaituBean.viewUpdateZaitu(zaitu)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{zaituBean.updateZaituResult}" update="zaituTable" />
+			</p:commandButton>
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

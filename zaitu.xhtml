@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>在途信息</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form id="form_input_data_update">
+		<p:panelGrid id="panelGridWareHouse" style="width:100%">
+			<p:row rendered="#{not empty zaituForm.id}">
+				<p:column>在途ID:</p:column>
+				<p:column>
+					<h:outputText value="#{zaituForm.id}" />
+					<h:inputHidden id="id" value="#{zaituForm.id}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>在途日期:</p:column>
+				<p:column>
+					<p:calendar id="zaituDate" value="#{zaituForm.zaituDate}" pattern="yyyy-MM-dd" size="8" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品总数:</p:column>
+				<p:column>
+					<p:inputText id="goodsTotalCount" value="#{zaituForm.goodsTotalCount}" size="8" />
+					<p:outputLabel for="goodsTotalCount"> 个</p:outputLabel>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品总价:</p:column>
+				<p:column>
+					<p:inputText id="goodsTotalPrice" value="#{zaituForm.goodsTotalPrice}" size="8" />
+					<p:outputLabel for="goodsTotalPrice"> 円</p:outputLabel>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>运费总价:</p:column>
+				<p:column>
+					<p:inputText id="freightTotal" value="#{zaituForm.freightTotal}" size="8" />
+					<p:outputLabel for="freightTotal"> 円</p:outputLabel>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>到货标识:</p:column>
+				<p:column>
+					<p:selectBooleanCheckbox id="daohuoFlg" value="#{zaituForm.daohuoFlg}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>到货日期:</p:column>
+				<p:column>
+					<p:calendar id="daohuoDate" value="#{zaituForm.daohuoDate}" pattern="yyyy-MM-dd" size="8" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>备注:</p:column>
+				<p:column>
+					<p:inputTextarea rows="" cols="" id="beizhu" value="#{zaituForm.beizhu}"></p:inputTextarea>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+			        <p:commandButton value="登录" actionListener="#{zaituBean.registerZaitu}" rendered="#{empty zaituForm.id}" />
+					<p:commandButton value="更新" id="btn_zaitu_update" actionListener="#{zaituBean.updateZaitu}" rendered="#{not empty zaituForm.id}"/>
+				</p:column>
+			</p:row>
+
+
+		</p:panelGrid>
+	</h:form>
+</ui:composition>

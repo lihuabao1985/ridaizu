@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>在途商品一括登録</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form enctype="multipart/form-data">
+		<p:panelGrid id="panelGridWareHouse">
+			<p:row>
+		        <p:column>
+					<p:outputLabel>在途日期：</p:outputLabel>
+		        </p:column>
+		        <p:column>
+					<p:calendar id="zaituDate" value="#{zaituDetailBean.zaituDate}" pattern="yyyy-MM-dd" size="8" />
+		        </p:column>
+		    </p:row>
+			<p:row>
+		        <p:column>
+					<p:outputLabel>文件上传：</p:outputLabel>
+		        </p:column>
+		        <p:column>
+					<p:fileUpload value="#{zaituDetailBean.goodsFile}" mode="simple" skinSimple="true" />
+		        </p:column>
+		    </p:row>
+			<p:row>
+		        <p:column colspan="2">
+					<p:commandButton value="在途确认" ajax="false" actionListener="#{zaituDetailBean.checkZaituDetail}" />
+		        </p:column>
+		    </p:row>
+		</p:panelGrid>
+	</h:form>
+</ui:composition>
