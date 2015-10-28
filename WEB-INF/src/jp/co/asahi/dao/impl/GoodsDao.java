@@ -79,19 +79,13 @@ public class GoodsDao extends DaoAdapter {
 	public List<Goods> selectGoodsList() throws SQLException {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT \n");
-		sql.append("id, name \n");
-		sql.append("FROM m_goods \n");
+		sql.append("SELECT * FROM m_goods \n");
 
 		ResultSet rs = DBAccess.query(sql.toString());
 
 		List<Goods> modelList = new ArrayList<Goods> ();
 		while (rs.next()) {
-			Goods goods = new Goods();
-			goods.setId(rs.getInt("id"));
-			goods.setName(rs.getString("name"));
-
-			modelList.add(goods);
+			modelList.add((Goods)getModel(rs));
 		}
 
 		rs.close();

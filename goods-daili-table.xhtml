@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_goodsDaili" layout="block" rendered="#{not empty goodsDailiBean.lazyModel}">
+
+
+   <p:contextMenu for="goodsDailiTable" widgetVar="cMenu">
+       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>
+       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>
+   </p:contextMenu>
+
+	<p:dataTable id="goodsDailiTable" var="goodsDaili" value="#{goodsDailiBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{goodsDailiBean.selectedGoodsDailiList}" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100,1000"
+	editable="true" editMode="cell" widgetVar="cellCars">
+
+		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+		<p:ajax event="cellEdit" listener="#{goodsDailiBean.onCellEdit}" />
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{goodsDaili.id}" />
+	    </p:column>
+
+	    <p:column headerText="代理名" sortBy="daili_name" style="width:50px;">
+	        <h:outputText value="#{goodsDaili.dailiName}" />
+	    </p:column>
+
+	    <p:column headerText="条形码" sortBy="barcode" style="width:50px;">
+	        <h:outputText value="#{goodsDaili.barcode}" />
+	    </p:column>
+
+	    <p:column headerText="商品名" sortBy="goods_name" style="width:150px;">
+	        <h:outputText value="#{goodsDaili.goodsName}" />
+	    </p:column>
+
+        <p:column headerText="最小数量" style="width:30px;">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goodsDaili.minCount}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goodsDaili.minCount}" style="width:96%" label="最小数量"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+
+       <p:column headerText="代理价格" style="width:30px;">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goodsDaili.price}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goodsDaili.price}" style="width:96%" label="代理价格"/></f:facet>
+           </p:cellEditor>
+       </p:column>
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{goodsDailiBean.viewUpdateGoodsDaili(goodsDaili)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{goodsDailiBean.updateGoodsDailiResult}" update="goodsDailiTable" />
+			</p:commandButton>
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

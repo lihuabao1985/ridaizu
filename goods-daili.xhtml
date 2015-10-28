@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>代理商品信息</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+	<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+
+	<h:form id="form_input_data_update">
+		<p:panelGrid id="panelGridWareHouse" style="width:100%">
+			<p:row rendered="#{not empty goodsDailiForm.id}">
+				<p:column>ID:</p:column>
+				<p:column>
+					<h:outputText value="#{goodsDailiForm.id}" />
+					<h:inputHidden id="id" value="#{goodsDailiForm.id}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>代理:</p:column>
+				<p:column>
+					<p:selectOneMenu id="dailiId" value="#{goodsDailiForm.dailiId}" style="width:150px">
+						<f:selectItems value="#{goodsDailiForm.dailiSelectItemList}" />
+					</p:selectOneMenu>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>商品:</p:column>
+				<p:column>
+					<p:selectOneMenu id="goodsId" value="#{goodsDailiForm.goodsId}" style="width:200px" filter="true" filterMatchMode="contains">
+						<f:selectItems value="#{goodsDailiForm.goodsSelectItemList}" />
+					</p:selectOneMenu>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>最小数量:</p:column>
+				<p:column>
+					<p:inputText id="minCount" value="#{goodsDailiForm.minCount}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>代理价格:</p:column>
+				<p:column>
+					<p:inputText id="price" value="#{goodsDailiForm.price}" size="12" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+			        <p:commandButton value="登录" actionListener="#{goodsDailiBean.registerGoodsDaili}" rendered="#{empty goodsDailiForm.id}" />
+					<p:commandButton value="更新" id="btn_goodsDaili_update" actionListener="#{goodsDailiBean.updateGoodsDaili}" rendered="#{not empty goodsDailiForm.id}"/>
+				</p:column>
+			</p:row>
+
+		</p:panelGrid>
+	</h:form>
+</ui:composition>

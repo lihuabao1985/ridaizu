@@ -9,7 +9,11 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.model.SelectItem;
 
 import jp.co.asahi.cache.CacheManager.CacheKey;
+import jp.co.asahi.model.Daili;
+import jp.co.asahi.model.Goods;
 import jp.co.asahi.model.Zaitu;
+import jp.co.asahi.service.impl.DailiServiceImpl;
+import jp.co.asahi.service.impl.GoodsServiceImpl;
 import jp.co.asahi.service.impl.ZaituServiceImpl;
 import jp.co.asahi.util.DateUtil;
 
@@ -22,6 +26,8 @@ public class CacheDataBean implements Serializable {
 	public CacheDataBean() {
 		getGradeList();
 		getZaituList();
+		getDailiSelectItemList();
+		getGoodsSelectItemList();
 	}
 
 
@@ -65,7 +71,66 @@ public class CacheDataBean implements Serializable {
 		return selectItemList;
 	}
 
+	public List<SelectItem> getDailiSelectItemList() {
+		List<SelectItem> dailiSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.DailiSelectItemList);
+		if(dailiSelectItemList == null){
 
+	        dailiSelectItemList = new ArrayList<SelectItem>();
+
+			DailiServiceImpl service = new DailiServiceImpl();
+			List<Daili> tmpDailiList = null;
+
+			try {
+				tmpDailiList = service.getDailiList();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Daili daili : tmpDailiList) {
+				dailiSelectItemList.add(new SelectItem(daili.getId(), daili.getName()));
+			}
+
+			if(dailiSelectItemList != null && !dailiSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.DailiSelectItemList, dailiSelectItemList);
+			}
+		}
+		return dailiSelectItemList;
+	}
+
+	public void setDailiSelectItemList(List<SelectItem> dailiSelectItemList) {
+		CacheManager.set(CacheKey.DailiSelectItemList, dailiSelectItemList);
+	}
+
+	public List<SelectItem> getGoodsSelectItemList() {
+		List<SelectItem> goodsSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.GoodsSelectItemList);
+		if(goodsSelectItemList == null){
+
+	        goodsSelectItemList = new ArrayList<SelectItem>();
+
+			GoodsServiceImpl service = new GoodsServiceImpl();
+			List<Goods> tmpGoodsList = null;
+
+			try {
+				tmpGoodsList = service.getGoodsList();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Goods goods : tmpGoodsList) {
+				goodsSelectItemList.add(new SelectItem(goods.getId(), goods.getName()));
+			}
+
+			if(goodsSelectItemList != null && !goodsSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.GoodsSelectItemList, goodsSelectItemList);
+			}
+		}
+		return goodsSelectItemList;
+	}
+
+	public void setGoodsSelectItemList(
+			List<SelectItem> goodsSelectItemList) {
+		CacheManager.set(CacheKey.GoodsSelectItemList, goodsSelectItemList);
+	}
 
 
 

@@ -29,6 +29,8 @@ public final class CacheManager {
 		NaccsDictionaryMap,
 		GradeList,
 		ZaituSelectItemList,
+		DailiSelectItemList,
+		GoodsSelectItemList,
 	}
 	private CacheManager(){
 	}

@@ -7,27 +7,27 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import jp.co.asahi.dao.DaoAdapter;
-import jp.co.asahi.dao.impl.DailiDao;
-import jp.co.asahi.model.Daili;
+import jp.co.asahi.dao.impl.GoodsDailiDao;
+import jp.co.asahi.model.GoodsDaili;
 import jp.co.asahi.model.Model;
 import jp.co.asahi.model.search.SearchModel;
 import jp.co.asahi.service.Service;
 
-@ManagedBean(name = "dailiServiceImpl")
+@ManagedBean(name = "goodsDailiServiceImpl")
 @ApplicationScoped
-public class DailiServiceImpl extends Service {
+public class GoodsDailiServiceImpl extends Service {
 
 	private static final long serialVersionUID = 1L;
 
-	private DailiDao dao;
+	private GoodsDailiDao dao;
 
-	public DailiServiceImpl() {
-		this.dao = new DailiDao();
+	public GoodsDailiServiceImpl() {
+		this.dao = new GoodsDailiDao();
 	}
 
 	@Override
 	public void setDao(DaoAdapter dao) {
-		this.dao = (DailiDao) dao;
+		this.dao = (GoodsDailiDao) dao;
 	}
 
 	@Override
@@ -35,15 +35,16 @@ public class DailiServiceImpl extends Service {
 		return dao.selectCount(searchModel);
 	}
 
-	public List<Daili> getDailiList() throws SQLException {
+	public List<GoodsDaili> getGoodsDailiList(SearchModel searchModel) throws SQLException {
 
-		return dao.selectDailiList();
+		return dao.selectGoodsDailiList(searchModel);
 	}
 
-	public List<Daili> getDailiList(SearchModel searchModel) throws SQLException {
+	public boolean checkGoodsDaili(int dailiId, int goodsId) throws SQLException {
 
-		return dao.selectDailiList(searchModel);
+		return dao.checkGoodsDaili(dailiId, goodsId);
 	}
+
 
 	public boolean insert(Model model) {
 

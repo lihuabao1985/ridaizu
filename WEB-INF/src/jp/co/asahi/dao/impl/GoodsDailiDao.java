@@ -12,16 +12,16 @@ import javax.faces.bean.ManagedBean;
 
 import jp.co.asahi.dao.DaoAdapter;
 import jp.co.asahi.dao.db.DBAccess;
-import jp.co.asahi.model.Daili;
+import jp.co.asahi.model.GoodsDaili;
 import jp.co.asahi.model.Model;
 import jp.co.asahi.model.search.SearchModel;
 
 import com.google.common.base.Strings;
 import com.google.common.primitives.Ints;
 
-@ManagedBean(name = "dailiDao")
+@ManagedBean(name = "goodsDailiDao")
 @ApplicationScoped
-public class DailiDao extends DaoAdapter {
+public class GoodsDailiDao extends DaoAdapter {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class DailiDao extends DaoAdapter {
 	public int selectCount(SearchModel searchModel) throws SQLException {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT count(*) as count FROM m_daili \n");
+		sql.append("SELECT count(*) as count FROM v_goods_daili \n");
 		sql.append(searchModel.getSelectCountSql());
 
 		Object[] params = searchModel.getConditionList().toArray();
@@ -51,43 +51,44 @@ public class DailiDao extends DaoAdapter {
 		return count;
 	}
 
-	public List<Daili> selectDailiList() throws SQLException {
+	public boolean checkGoodsDaili(int dailiId, int goodsId) throws SQLException {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append("SELECT \n");
-		sql.append("id, name \n");
-		sql.append("FROM m_daili \n");
+		sql.append("SELECT count(*) as count FROM v_goods_daili where daili_id = ? AND goods_id = ? \n");
 
-		ResultSet rs = DBAccess.query(sql.toString());
+		Object[] params = new Object[] { dailiId, goodsId };
 
-		List<Daili> modelList = new ArrayList<Daili> ();
-		while (rs.next()) {
-			Daili daili = new Daili();
-			daili.setId(rs.getInt("id"));
-			daili.setName(rs.getString("name"));
+		ResultSet rs = DBAccess.query(sql.toString(), params);
 
-			modelList.add(daili);
+		if (rs == null) {
+			return false;
+		}
+
+		boolean result = true;
+
+		if (rs.next()) {
+			result = rs.getInt("count") > 0;
 		}
 
 		rs.close();
 
-		return modelList;
+		return result;
 	}
 
-	public List<Daili> selectDailiList(SearchModel searchModel) throws SQLException {
+	public List<GoodsDaili> selectGoodsDailiList(SearchModel searchModel) throws SQLException {
 
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT * \n");
-		sql.append("FROM m_daili \n");
+		sql.append("FROM v_goods_daili \n");
 		sql.append(searchModel.getSelectSql());
 
 		Object[] params = searchModel.getConditionList().toArray();
 
 		ResultSet rs = DBAccess.query(sql.toString(), params);
 
-		List<Daili> modelList = new ArrayList<Daili> ();
+		List<GoodsDaili> modelList = new ArrayList<GoodsDaili> ();
 		while (rs.next()) {
-			modelList.add((Daili)getModel(rs));
+			modelList.add((GoodsDaili)getModel(rs));
 		}
 
 		rs.close();
@@ -100,17 +101,18 @@ public class DailiDao extends DaoAdapter {
 
 		checkNotNull(rs);
 
-		Daili daili = new Daili();
-		daili.setId(rs.getInt("id"));
-		daili.setName(rs.getString("name"));
-		daili.setWangwang(rs.getString("wangwang"));
-		daili.setWeixin(rs.getString("weixin"));
-		daili.setQq(rs.getString("qq"));
-		daili.setTel(rs.getString("tel"));
-		daili.setEmail(rs.getString("email"));
-		daili.setDelFlg(rs.getBoolean("del_flg"));
+		GoodsDaili goodsDaili = new GoodsDaili();
+		goodsDaili.setId(rs.getInt("id"));
+		goodsDaili.setDailiId(rs.getInt("daili_id"));
+		goodsDaili.setDailiName(rs.getString("daili_name"));
+		goodsDaili.setGoodsId(rs.getInt("goods_id"));
+		goodsDaili.setGoodsName(rs.getString("goods_name"));
+		goodsDaili.setTaobaoName(rs.getString("taobao_name"));
+		goodsDaili.setBarcode(rs.getString("barcode"));
+		goodsDaili.setMinCount(rs.getInt("min_count"));
+		goodsDaili.setPrice(rs.getDouble("price"));
 
-		return daili;
+		return goodsDaili;
 	}
 
 	public int insert(Model model) {
@@ -118,14 +120,14 @@ public class DailiDao extends DaoAdapter {
 		checkNotNull(model);
 
 		StringBuffer sql = new StringBuffer();
-		sql.append("INSERT INTO m_daili \n");
-		sql.append("(name, wangwang, weixin, qq, tel, email, del_flg) \n");
-		sql.append("VALUES(?, ?, ?, ?, ?, ?, ?) \n");
+		sql.append("INSERT INTO m_goods_daili \n");
+		sql.append("(daili_id, goods_id, min_count, price) \n");
+		sql.append("VALUES(?, ?, ?, ?) \n");
 
-		Daili daili = (Daili) model;
+		GoodsDaili goodsDaili = (GoodsDaili) model;
 
 		Object[] params = new Object[] {
-				daili.getName(), daili.getWangwang(), daili.getWeixin(), daili.getQq(), daili.getTel(), daili.getEmail(), daili.isDelFlg()
+				goodsDaili.getDailiId(), goodsDaili.getGoodsId(), goodsDaili.getMinCount(), goodsDaili.getPrice()
 		};
 
 		return DBAccess.update(sql.toString(), params);
@@ -137,22 +139,19 @@ public class DailiDao extends DaoAdapter {
 		checkNotNull(model);
 
 		StringBuffer sql = new StringBuffer();
-		sql.append("UPDATE m_daili \n");
+		sql.append("UPDATE m_goods_daili \n");
 		sql.append("SET \n");
-		sql.append("name = ?, \n");
-		sql.append("wangwang = ?, \n");
-		sql.append("weixin = ?, \n");
-		sql.append("qq = ?, \n");
-		sql.append("tel = ? \n");
-		sql.append("email = ? \n");
-		sql.append("del_flg = ? \n");
+		sql.append("daili_id = ?, \n");
+		sql.append("goods_id = ?, \n");
+		sql.append("min_count = ?, \n");
+		sql.append("price = ? \n");
 		sql.append("WHERE id = ? \n");
 
-		Daili daili = (Daili) model;
+		GoodsDaili goodsDaili = (GoodsDaili) model;
 
 		Object[] params = new Object[] {
-				daili.getName(), daili.getWangwang(), daili.getWeixin(), daili.getQq(), daili.getTel(), daili.getEmail(), daili.isDelFlg(),
-				daili.getId()
+				goodsDaili.getDailiId(), goodsDaili.getGoodsId(), goodsDaili.getMinCount(), goodsDaili.getPrice(),
+				goodsDaili.getId()
 		};
 
 		return DBAccess.update(sql.toString(), params);
@@ -160,7 +159,7 @@ public class DailiDao extends DaoAdapter {
 
 	@Override
 	public int delete(int... id) {
-		String sql = "DELETE FROM m_daili WHERE id in(%s);";
+		String sql = "DELETE FROM m_goods_daili WHERE id in(%s);";
 
 		String c = "?";
 		c += Strings.repeat(",?", id.length - 1);

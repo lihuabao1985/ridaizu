@@ -19,59 +19,59 @@
 
 	<h:form id="form_input_data_update">
 		<p:panelGrid id="panelGridWareHouse" style="width:100%">
-			<p:row rendered="#{not empty brandForm.id}">
-				<p:column>品牌ID:</p:column>
+			<p:row rendered="#{not empty dailiForm.id}">
+				<p:column>id:</p:column>
 				<p:column>
-					<h:outputText value="#{brandForm.id}" />
-					<h:inputHidden id="id" value="#{brandForm.id}" />
+					<h:outputText value="#{dailiForm.id}" />
+					<h:inputHidden id="id" value="#{dailiForm.id}" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌名:</p:column>
+				<p:column>name:</p:column>
 				<p:column>
-					<p:inputText id="name" value="#{brandForm.name}" size="12" />
+					<p:inputText id="name" value="#{dailiForm.name}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌简介:</p:column>
+				<p:column>wangwang:</p:column>
 				<p:column>
-					<p:inputTextarea rows="" cols="" id="summary" value="#{brandForm.summary}"></p:inputTextarea>
+					<p:inputText id="wangwang" value="#{dailiForm.wangwang}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌详细介绍:</p:column>
+				<p:column>weixin:</p:column>
 				<p:column>
-					<p:inputTextarea rows="" cols="" id="detail" value="#{brandForm.detail}"></p:inputTextarea>
+					<p:inputText id="weixin" value="#{dailiForm.weixin}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌主页:</p:column>
+				<p:column>qq:</p:column>
 				<p:column>
-					<p:inputText id="homepage" value="#{brandForm.homepage}" size="12" />
+					<p:inputText id="qq" value="#{dailiForm.qq}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌焦点图链接:</p:column>
+				<p:column>tel:</p:column>
 				<p:column>
-					<p:inputText id="photoUrl" value="#{brandForm.photoUrl}" size="12" />
+					<p:inputText id="tel" value="#{dailiForm.tel}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
-				<p:column>品牌缩略图链接:</p:column>
+				<p:column>email:</p:column>
 				<p:column>
-					<p:inputText id="thumbnailsUrl" value="#{brandForm.thumbnailsUrl}" size="12" />
+					<p:inputText id="email" value="#{dailiForm.email}" size="12" />
 				</p:column>
 			</p:row>
 			<p:row>
 				<p:column>删除标识:</p:column>
 				<p:column>
-					<p:selectBooleanCheckbox id="delFlg" value="#{brandForm.delFlg}" />
+					<p:selectBooleanCheckbox id="delFlg" value="#{dailiForm.delFlg}" />
 				</p:column>
 			</p:row>
 			<p:row>
 				<p:column colspan="2">
-			        <p:commandButton value="登录" actionListener="#{brandBean.registerDaili}" rendered="#{empty brandForm.id}" />
-					<p:commandButton value="更新" id="btn_brand_update" actionListener="#{brandBean.updateDaili}" rendered="#{not empty brandForm.id}"/>
+			        <p:commandButton value="登录" actionListener="#{dailiBean.registerDaili}" rendered="#{empty dailiForm.id}" />
+					<p:commandButton value="更新" id="btn_daili_update" actionListener="#{dailiBean.updateDaili}" rendered="#{not empty dailiForm.id}"/>
 				</p:column>
 			</p:row>
 

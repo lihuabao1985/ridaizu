@@ -22,6 +22,10 @@ public class DailiForm extends Model {
 
 	private String tel;
 
+	private String email;
+
+	private boolean delFlg;
+
 	public String getId() {
 		return id;
 	}
@@ -70,6 +74,22 @@ public class DailiForm extends Model {
 		this.tel = tel;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean isDelFlg() {
+		return delFlg;
+	}
+
+	public void setDelFlg(boolean delFlg) {
+		this.delFlg = delFlg;
+	}
+
 	public void clearAll() {
 		id = null;
 		name = null;
@@ -77,6 +97,8 @@ public class DailiForm extends Model {
 		weixin = null;
 		qq = null;
 		tel = null;
+		email = null;
+		delFlg = false;
 	}
 
 }

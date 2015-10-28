@@ -6,20 +6,20 @@ import javax.faces.bean.SessionScoped;
 
 import com.google.common.base.Strings;
 
-@javax.faces.bean.ManagedBean(name = "dailiSearch")
+@javax.faces.bean.ManagedBean(name = "goodsDailiSearch")
 @SessionScoped
-public class DailiSearch extends SearchModel {
+public class GoodsDailiSearch extends SearchModel {
 
 	private static final long serialVersionUID = 1L;
 
-	private String name;
+	private String dailiName;
 
-	public String getName() {
-		return name;
+	public String getDailiName() {
+		return dailiName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDailiName(String dailiName) {
+		this.dailiName = dailiName;
 	}
 
 	@Override
@@ -30,11 +30,11 @@ public class DailiSearch extends SearchModel {
 
 		sb.append("WHERE 1=1 \n");
 
-		if (!Strings.isNullOrEmpty(name)) {
+		if (!Strings.isNullOrEmpty(dailiName)) {
 			sb.append("AND ");
-			sb.append("name like ?");
+			sb.append("daili_name like ?");
 			sb.append("\n");
-			conditionList.add("%" + name + "%");
+			conditionList.add("%" + dailiName + "%");
 		}
 
 		if (!Strings.isNullOrEmpty(this.sortField)) {
@@ -57,11 +57,11 @@ public class DailiSearch extends SearchModel {
 
 		sb.append("WHERE 1=1 \n");
 
-		if (!Strings.isNullOrEmpty(name)) {
+		if (!Strings.isNullOrEmpty(dailiName)) {
 			sb.append("AND ");
-			sb.append("name like ?");
+			sb.append("daili_name like ?");
 			sb.append("\n");
-			conditionList.add("%" + name + "%");
+			conditionList.add("%" + dailiName + "%");
 		}
 
 		return sb.toString();

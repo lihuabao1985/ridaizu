@@ -86,6 +86,8 @@ public class DailiBean extends BaseBean {
 		dailiForm.setWeixin(daili.getWeixin());
 		dailiForm.setQq(daili.getQq());
 		dailiForm.setTel(daili.getTel());
+		dailiForm.setEmail(daili.getEmail());
+		dailiForm.setDelFlg(daili.isDelFlg());
 	}
 
 	public void registerDaili() {
@@ -170,6 +172,8 @@ public class DailiBean extends BaseBean {
 		daili.setWeixin(dailiForm.getWeixin());
 		daili.setQq(dailiForm.getQq());
 		daili.setTel(dailiForm.getTel());
+		daili.setEmail(dailiForm.getEmail());
+		daili.setDelFlg(dailiForm.isDelFlg());
 
 		return daili;
 	}
