@@ -314,12 +314,17 @@ public class GoodsDailiBean extends BaseBean {
 	}
 
 	public void onCellEdit(CellEditEvent event) {
+
         Object oldValue = event.getOldValue();
         Object newValue = event.getNewValue();
 
         if(newValue != null && !newValue.equals(oldValue)) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+
+            GoodsDaili goodsDaili = lazyModel.getRowData();
+            if(goodsDailiService.insert(goodsDaili)) {
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Deta Update", String.format("代理【%s】数据更新成功。Old:【%s】， New：【%s】", goodsDaili.getDailiName(), oldValue, newValue));
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }
         }
     }
 }
