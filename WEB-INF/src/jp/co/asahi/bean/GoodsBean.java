@@ -85,11 +85,13 @@ public class GoodsBean extends BaseBean {
 		goodsForm.setId(String.valueOf(goods.getId()));
 		goodsForm.setName(goods.getName());
 		goodsForm.setTaobaoName(goods.getTaobaoName());
+		goodsForm.setXiaoshouShuxing(goods.getXiaoshouShuxing());
 		goodsForm.setGoodsCode(goods.getGoodsCode());
 		goodsForm.setBarcode(goods.getBarcode());
 		goodsForm.setGoodsTypeId(String.valueOf(goods.getGoodsTypeId()));
 		goodsForm.setCapacity(goods.getCapacity());
 		goodsForm.setWeight(String.valueOf(goods.getWeight()));
+		goodsForm.setChengbenjia(String.valueOf(goods.getChengbenjia()));
 		goodsForm.setWholesalePrice(String.valueOf(goods.getWholesalePrice()));
 		goodsForm.setPrice(String.valueOf(goods.getPrice()));
 		goodsForm.setSalesPrice(String.valueOf(goods.getSalesPrice()));
@@ -185,6 +187,7 @@ public class GoodsBean extends BaseBean {
 		}
 		goods.setName(goodsForm.getName());
 		goods.setTaobaoName(goodsForm.getTaobaoName());
+		goods.setXiaoshouShuxing(goodsForm.getXiaoshouShuxing());
 		goods.setGoodsCode(goodsForm.getGoodsCode());
 		goods.setBarcode(goodsForm.getBarcode());
 		if (goodsForm.getGoodsTypeId() != null) {
@@ -194,6 +197,10 @@ public class GoodsBean extends BaseBean {
 		goods.setCapacity(goodsForm.getCapacity());
 		if (goodsForm.getWeight() != null) {
 			goods.setWeight(Integer.valueOf(goodsForm.getWeight()));
+		}
+
+		if (goodsForm.getChengbenjia() != null) {
+			goods.setChengbenjia(Double.valueOf(goodsForm.getChengbenjia()));
 		}
 
 		if (goodsForm.getWholesalePrice() != null) {

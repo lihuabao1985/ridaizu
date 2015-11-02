@@ -21,6 +21,9 @@ public class Goods extends Model {
 	/** 商品条形码 */
 	private String barcode;
 
+	/** 商品销售属性 */
+	private String xiaoshouShuxing;
+
 	/** 商品类型ID */
 	private int goodsTypeId;
 
@@ -29,6 +32,9 @@ public class Goods extends Model {
 
 	/** 商品重量 */
 	private int weight;
+
+	/** 商品成本价格 */
+	private double chengbenjia;
 
 	/** 商品批发价格 */
 	private double wholesalePrice;
@@ -290,6 +296,22 @@ public class Goods extends Model {
 
 	public void setUpdDate(Timestamp updDate) {
 		this.updDate = updDate;
+	}
+
+	public String getXiaoshouShuxing() {
+		return xiaoshouShuxing;
+	}
+
+	public void setXiaoshouShuxing(String xiaoshouShuxing) {
+		this.xiaoshouShuxing = xiaoshouShuxing;
+	}
+
+	public double getChengbenjia() {
+		return chengbenjia;
+	}
+
+	public void setChengbenjia(double chengbenjia) {
+		this.chengbenjia = chengbenjia;
 	}
 
 }

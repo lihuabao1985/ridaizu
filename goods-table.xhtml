@@ -20,6 +20,10 @@
 	        <h:outputText value="#{goods.taobaoName}" />
 	    </p:column>
 
+	    <p:column headerText="销售属性" sortBy="xiaoshou_shuxing" style="width:50px;">
+	        <h:outputText value="#{goods.xiaoshouShuxing}" />
+	    </p:column>
+
 	    <p:column headerText="商品编码" sortBy="goods_code" style="width:50px;">
 	        <h:outputText value="#{goods.goodsCode}" />
 	    </p:column>
@@ -28,15 +32,23 @@
 	        <h:outputText value="#{goods.barcode}" />
 	    </p:column>
 
-	    <p:column headerText="商品类型" sortBy="goods_type_id" style="width:30px;">
+	    <p:column headerText="类型" sortBy="goods_type_id" style="width:30px;">
 	        <h:outputText value="#{goods.goodsTypeId}" />
 	    </p:column>
 
-	    <p:column headerText="商品规格" sortBy="capacity" style="width:30px;">
+	    <p:column headerText="规格" sortBy="capacity" style="width:30px;">
 	        <h:outputText value="#{goods.capacity}" />
 	    </p:column>
 
-	    <p:column headerText="商品重量" sortBy="weight" style="width:30px;">
+	    <p:column headerText="价格" sortBy="price" style="width:30px;">
+	        <h:outputText value="#{goods.price}" />
+	    </p:column>
+
+	    <p:column headerText="成本价" sortBy="chengbenjia" style="width:30px;">
+	        <h:outputText value="#{goods.chengbenjia}" />
+	    </p:column>
+
+	    <p:column headerText="重量" sortBy="weight" style="width:30px;">
 	        <h:outputText value="#{goods.weight}" />
 	    </p:column>
 

@@ -19,6 +19,9 @@ public class GoodsForm extends Model {
 	/** 淘宝商品名 */
 	private String taobaoName;
 
+	/** 销售属性 */
+	private String xiaoshouShuxing;
+
 	/** 商品编码 */
 	private String goodsCode;
 
@@ -33,6 +36,9 @@ public class GoodsForm extends Model {
 
 	/** 商品重量 */
 	private String weight;
+
+	/** 商品成本价格 */
+	private String chengbenjia;
 
 	/** 商品批发价格 */
 	private String wholesalePrice;
@@ -252,15 +258,33 @@ public class GoodsForm extends Model {
 		this.delFlg = delFlg;
 	}
 
+	public String getXiaoshouShuxing() {
+		return xiaoshouShuxing;
+	}
+
+	public void setXiaoshouShuxing(String xiaoshouShuxing) {
+		this.xiaoshouShuxing = xiaoshouShuxing;
+	}
+
+	public String getChengbenjia() {
+		return chengbenjia;
+	}
+
+	public void setChengbenjia(String chengbenjia) {
+		this.chengbenjia = chengbenjia;
+	}
+
 	public void clearAll() {
 		id = null;
 		name = null;
 		taobaoName = null;
+		xiaoshouShuxing = null;
 		goodsCode = null;
 		barcode = null;
 		goodsTypeId = null;
 		capacity = null;
 		weight = null;
+		chengbenjia = null;
 		wholesalePrice = null;
 		price = null;
 		salesPrice = null;
