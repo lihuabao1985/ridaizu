@@ -99,7 +99,7 @@ public class GoodsBean extends BaseBean {
 		goodsForm.setDetail(goods.getDetail());
 		goodsForm.setIngredient(goods.getIngredient());
 		goodsForm.setEffect(goods.getEffect());
-		goodsForm.setSuitAgeId(String.valueOf(goods.getSuitAgeId()));
+		goodsForm.setNianlingcengId(String.valueOf(goods.getNianlingcengId()));
 		goodsForm.setInstructions(goods.getInstructions());
 		goodsForm.setPrecautions(goods.getPrecautions());
 		goodsForm.setGoodsUrl(goods.getGoodsUrl());
@@ -219,8 +219,8 @@ public class GoodsBean extends BaseBean {
 		goods.setDetail(goodsForm.getDetail());
 		goods.setIngredient(goodsForm.getIngredient());
 		goods.setEffect(goodsForm.getEffect());
-		if (goodsForm.getSuitAgeId() != null) {
-			goods.setSuitAgeId(Integer.valueOf(goodsForm.getSuitAgeId()));
+		if (goodsForm.getNianlingcengId() != null) {
+			goods.setNianlingcengId(Integer.valueOf(goodsForm.getNianlingcengId()));
 		}
 
 		goods.setInstructions(goodsForm.getInstructions());

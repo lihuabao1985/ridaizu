@@ -31,6 +31,10 @@ public final class CacheManager {
 		ZaituSelectItemList,
 		DailiSelectItemList,
 		GoodsSelectItemList,
+		PifuTypeSelectItemList,
+		NianlingcengSelectItemList,
+		GoodsTypeSelectItemList,
+		JiageduanSelectItemList
 	}
 	private CacheManager(){
 	}

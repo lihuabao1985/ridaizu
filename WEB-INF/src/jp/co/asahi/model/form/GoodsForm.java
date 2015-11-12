@@ -1,6 +1,9 @@
 package jp.co.asahi.model.form;
 
+import java.util.List;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.model.SelectItem;
 
 import jp.co.asahi.model.Model;
 
@@ -62,7 +65,7 @@ public class GoodsForm extends Model {
 	private String effect;
 
 	/** 适合年龄段 */
-	private String suitAgeId;
+	private String nianlingcengId;
 
 	/** 使用方法 */
 	private String instructions;
@@ -81,6 +84,14 @@ public class GoodsForm extends Model {
 
 	/** 删除标识 */
 	private boolean delFlg;
+
+	List<SelectItem> pifuTypeSelectItemList;
+
+	List<SelectItem> nianlingcengSelectItemList;
+
+	List<SelectItem> goodsTypeSelectItemList;
+
+	List<SelectItem> jiageduanSelectItemList;
 
 	public String getId() {
 		return id;
@@ -202,12 +213,12 @@ public class GoodsForm extends Model {
 		this.effect = effect;
 	}
 
-	public String getSuitAgeId() {
-		return suitAgeId;
+	public String getNianlingcengId() {
+		return nianlingcengId;
 	}
 
-	public void setSuitAgeId(String suitAgeId) {
-		this.suitAgeId = suitAgeId;
+	public void setNianlingcengId(String nianlingcengId) {
+		this.nianlingcengId = nianlingcengId;
 	}
 
 	public String getInstructions() {
@@ -274,6 +285,39 @@ public class GoodsForm extends Model {
 		this.chengbenjia = chengbenjia;
 	}
 
+	public List<SelectItem> getPifuTypeSelectItemList() {
+		return pifuTypeSelectItemList;
+	}
+
+	public void setPifuTypeSelectItemList(List<SelectItem> pifuTypeSelectItemList) {
+		this.pifuTypeSelectItemList = pifuTypeSelectItemList;
+	}
+
+	public List<SelectItem> getNianlingcengSelectItemList() {
+		return nianlingcengSelectItemList;
+	}
+
+	public void setNianlingcengSelectItemList(
+			List<SelectItem> nianlingcengSelectItemList) {
+		this.nianlingcengSelectItemList = nianlingcengSelectItemList;
+	}
+
+	public List<SelectItem> getGoodsTypeSelectItemList() {
+		return goodsTypeSelectItemList;
+	}
+
+	public void setGoodsTypeSelectItemList(List<SelectItem> goodsTypeSelectItemList) {
+		this.goodsTypeSelectItemList = goodsTypeSelectItemList;
+	}
+
+	public List<SelectItem> getJiageduanSelectItemList() {
+		return jiageduanSelectItemList;
+	}
+
+	public void setJiageduanSelectItemList(List<SelectItem> jiageduanSelectItemList) {
+		this.jiageduanSelectItemList = jiageduanSelectItemList;
+	}
+
 	public void clearAll() {
 		id = null;
 		name = null;
@@ -292,7 +336,7 @@ public class GoodsForm extends Model {
 		detail = null;
 		ingredient = null;
 		effect = null;
-		suitAgeId = null;
+		nianlingcengId = null;
 		instructions = null;
 		precautions = null;
 		goodsUrl = null;

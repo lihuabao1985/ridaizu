@@ -58,7 +58,7 @@ public class Goods extends Model {
 	private String effect;
 
 	/** 适合年龄段 */
-	private int suitAgeId;
+	private int nianlingcengId;
 
 	/** 使用方法 */
 	private String instructions;
@@ -210,12 +210,12 @@ public class Goods extends Model {
 		this.effect = effect;
 	}
 
-	public int getSuitAgeId() {
-		return suitAgeId;
+	public int getNianlingcengId() {
+		return nianlingcengId;
 	}
 
-	public void setSuitAgeId(int suitAgeId) {
-		this.suitAgeId = suitAgeId;
+	public void setNianlingcengId(int nianlingcengId) {
+		this.nianlingcengId = nianlingcengId;
 	}
 
 	public String getInstructions() {

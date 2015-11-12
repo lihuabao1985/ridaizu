@@ -137,7 +137,7 @@ public class GoodsDao extends DaoAdapter {
 		goods.setDetail(rs.getString("detail"));
 		goods.setIngredient(rs.getString("ingredient"));
 		goods.setEffect(rs.getString("effect"));
-		goods.setSuitAgeId(rs.getInt("suit_age_id"));
+		goods.setNianlingcengId(rs.getInt("nianlingceng_id"));
 		goods.setInstructions(rs.getString("instructions"));
 		goods.setPrecautions(rs.getString("precautions"));
 		goods.setGoodsUrl(rs.getString("goods_url"));
@@ -160,7 +160,7 @@ public class GoodsDao extends DaoAdapter {
 		sql.append("INSERT INTO m_goods \n");
 		sql.append("(name, taobao_name, goods_code, barcode, xiaoshou_shuxing, goods_type_id, \n");
 		sql.append("capacity, weight, chengbenjia, wholesale_price, price, sales_price, \n");
-		sql.append("summary, detail, ingredient, effect, suit_age_id, \n");
+		sql.append("summary, detail, ingredient, effect, nianlingceng_id, \n");
 		sql.append("instructions, precautions, goods_url, photo_url, thumbnails_url, \n");
 		sql.append("del_flg, rgt_opt, rgt_date, upd_opt, upd_date) \n");
 		sql.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) \n");
@@ -170,7 +170,7 @@ public class GoodsDao extends DaoAdapter {
 		Object[] params = new Object[] {
 				goods.getName(), goods.getTaobaoName(), goods.getGoodsCode(), goods.getBarcode(), goods.getXiaoshouShuxing(), goods.getGoodsTypeId(),
 				goods.getCapacity(), goods.getWeight(), goods.getChengbenjia(), goods.getWholesalePrice(), goods.getPrice(), goods.getSalesPrice(),
-				goods.getSummary(), goods.getDetail(), goods.getIngredient(), goods.getEffect(), goods.getSuitAgeId(),
+				goods.getSummary(), goods.getDetail(), goods.getIngredient(), goods.getEffect(), goods.getNianlingcengId(),
 				goods.getInstructions(), goods.getPrecautions(), goods.getGoodsUrl(), goods.getPhotoUrl(), goods.getThumbnailsUrl(),
 				goods.isDelFlg(), goods.getRgtOpt(), goods.getRgtDate(), goods.getUpdOpt(), goods.getUpdDate()
 		};
@@ -202,7 +202,7 @@ public class GoodsDao extends DaoAdapter {
 		sql.append("detail = ?, \n");
 		sql.append("ingredient = ?, \n");
 		sql.append("effect = ?, \n");
-		sql.append("suit_age_id = ?, \n");
+		sql.append("nianlingceng_id = ?, \n");
 		sql.append("instructions = ?, \n");
 		sql.append("precautions = ?, \n");
 		sql.append("goods_url = ?, \n");
@@ -218,7 +218,7 @@ public class GoodsDao extends DaoAdapter {
 		Object[] params = new Object[] {
 				goods.getName(), goods.getTaobaoName(), goods.getGoodsCode(), goods.getBarcode(), goods.getXiaoshouShuxing(), goods.getGoodsTypeId(),
 				goods.getCapacity(), goods.getWeight(), goods.getChengbenjia(), goods.getWholesalePrice(), goods.getPrice(), goods.getSalesPrice(),
-				goods.getSummary(), goods.getDetail(), goods.getIngredient(), goods.getEffect(), goods.getSuitAgeId(),
+				goods.getSummary(), goods.getDetail(), goods.getIngredient(), goods.getEffect(), goods.getNianlingcengId(),
 				goods.getInstructions(), goods.getPrecautions(), goods.getGoodsUrl(), goods.getPhotoUrl(), goods.getThumbnailsUrl(),
 				goods.isDelFlg(), goods.getUpdOpt(), goods.getUpdDate(),
 				goods.getId()

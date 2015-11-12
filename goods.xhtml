@@ -125,7 +125,10 @@
 			<p:row>
 				<p:column>年龄段:</p:column>
 				<p:column>
-					<p:inputText id="suitAgeId" value="#{goodsForm.suitAgeId}" size="12" />
+					<p:selectOneMenu id="nianlingcengId" value="#{goodsForm.nianlingcengId}" style="width:130px">
+						<f:selectItem itemLabel="" itemValue="" />
+						<f:selectItems value="#{goodsForm.nianlingcengSelectItemList}" />
+					</p:selectOneMenu>
 				</p:column>
 			</p:row>
 			<p:row>

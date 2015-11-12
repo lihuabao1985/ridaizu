@@ -10,9 +10,12 @@ import javax.faces.model.SelectItem;
 
 import jp.co.asahi.cache.CacheManager.CacheKey;
 import jp.co.asahi.model.Daili;
+import jp.co.asahi.model.Dictionary;
 import jp.co.asahi.model.Goods;
 import jp.co.asahi.model.Zaitu;
+import jp.co.asahi.model.myenum.DictionaryTypeEnum;
 import jp.co.asahi.service.impl.DailiServiceImpl;
+import jp.co.asahi.service.impl.DictionaryServiceImpl;
 import jp.co.asahi.service.impl.GoodsServiceImpl;
 import jp.co.asahi.service.impl.ZaituServiceImpl;
 import jp.co.asahi.util.DateUtil;
@@ -28,6 +31,11 @@ public class CacheDataBean implements Serializable {
 		getZaituList();
 		getDailiSelectItemList();
 		getGoodsSelectItemList();
+
+		getPifuTypeSelectItemList();
+		getNianlingcengSelectItemList();
+		getGoodsTypeSelectItemList();
+		getJiageduanSelectItemList();
 	}
 
 
@@ -134,6 +142,129 @@ public class CacheDataBean implements Serializable {
 
 
 
+	public List<SelectItem> getPifuTypeSelectItemList() {
+		List<SelectItem> pifuTypeSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.PifuTypeSelectItemList);
+		if(pifuTypeSelectItemList == null){
+
+	        pifuTypeSelectItemList = new ArrayList<SelectItem>();
+
+			DictionaryServiceImpl service = new DictionaryServiceImpl();
+			List<Dictionary> tmpPifuTypeList = null;
+
+			try {
+				tmpPifuTypeList = service.getDictionaryList(DictionaryTypeEnum.PIFU_TYPE);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Dictionary pifuType : tmpPifuTypeList) {
+				pifuTypeSelectItemList.add(new SelectItem(pifuType.getId(), pifuType.getName()));
+			}
+
+			if(pifuTypeSelectItemList != null && !pifuTypeSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.PifuTypeSelectItemList, pifuTypeSelectItemList);
+			}
+		}
+		return pifuTypeSelectItemList;
+	}
+
+	public void setPifuTypeSelectItemList(
+			List<SelectItem> pifuTypeSelectItemList) {
+		CacheManager.set(CacheKey.PifuTypeSelectItemList, pifuTypeSelectItemList);
+	}
+
+	public List<SelectItem> getNianlingcengSelectItemList() {
+		List<SelectItem> nianlingcengSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.NianlingcengSelectItemList);
+		if(nianlingcengSelectItemList == null){
+
+	        nianlingcengSelectItemList = new ArrayList<SelectItem>();
+
+			DictionaryServiceImpl service = new DictionaryServiceImpl();
+			List<Dictionary> tmpNianlingcengList = null;
+
+			try {
+				tmpNianlingcengList = service.getDictionaryList(DictionaryTypeEnum.NIANLINGCENG);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Dictionary nianlingceng : tmpNianlingcengList) {
+				nianlingcengSelectItemList.add(new SelectItem(nianlingceng.getId(), nianlingceng.getName()));
+			}
+
+			if(nianlingcengSelectItemList != null && !nianlingcengSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.NianlingcengSelectItemList, nianlingcengSelectItemList);
+			}
+		}
+		return nianlingcengSelectItemList;
+	}
+
+	public void setNianlingcengSelectItemList(
+			List<SelectItem> nianlingcengSelectItemList) {
+		CacheManager.set(CacheKey.NianlingcengSelectItemList, nianlingcengSelectItemList);
+	}
+
+	public List<SelectItem> getGoodsTypeSelectItemList() {
+		List<SelectItem> goodsTypeSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.GoodsTypeSelectItemList);
+		if(goodsTypeSelectItemList == null){
+
+	        goodsTypeSelectItemList = new ArrayList<SelectItem>();
+
+			DictionaryServiceImpl service = new DictionaryServiceImpl();
+			List<Dictionary> tmpGoodsTypeList = null;
+
+			try {
+				tmpGoodsTypeList = service.getDictionaryList(DictionaryTypeEnum.GOODS_TYPE);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Dictionary goodsType : tmpGoodsTypeList) {
+				goodsTypeSelectItemList.add(new SelectItem(goodsType.getId(), goodsType.getName()));
+			}
+
+			if(goodsTypeSelectItemList != null && !goodsTypeSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.GoodsTypeSelectItemList, goodsTypeSelectItemList);
+			}
+		}
+		return goodsTypeSelectItemList;
+	}
+
+	public void setGoodsTypeSelectItemList(
+			List<SelectItem> goodsTypeSelectItemList) {
+		CacheManager.set(CacheKey.GoodsTypeSelectItemList, goodsTypeSelectItemList);
+	}
+
+	public List<SelectItem> getJiageduanSelectItemList() {
+		List<SelectItem> jiageduanSelectItemList = (List<SelectItem>) CacheManager.get(CacheKey.JiageduanSelectItemList);
+		if(jiageduanSelectItemList == null){
+
+	        jiageduanSelectItemList = new ArrayList<SelectItem>();
+
+			DictionaryServiceImpl service = new DictionaryServiceImpl();
+			List<Dictionary> tmpJiageduanList = null;
+
+			try {
+				tmpJiageduanList = service.getDictionaryList(DictionaryTypeEnum.JIAGEDUAN);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			for (Dictionary jiageduan : tmpJiageduanList) {
+				jiageduanSelectItemList.add(new SelectItem(jiageduan.getId(), jiageduan.getName()));
+			}
+
+			if(jiageduanSelectItemList != null && !jiageduanSelectItemList.isEmpty()){
+				CacheManager.set(CacheKey.JiageduanSelectItemList, jiageduanSelectItemList);
+			}
+		}
+		return jiageduanSelectItemList;
+	}
+
+	public void setJiageduanSelectItemList(
+			List<SelectItem> jiageduanSelectItemList) {
+		CacheManager.set(CacheKey.JiageduanSelectItemList, jiageduanSelectItemList);
+	}
 
 	/*
 	public List<String> getConsigneeCorList() {
