@@ -21,11 +21,17 @@
 	    </p:column>
 
 	    <p:column headerText="商品名" sortBy="name" style="width:100px;">
-	        <h:outputText value="#{goods.name}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.name}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.name}" style="width:96%" label="商品名"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="淘宝商品名" sortBy="taobao_name" style="width:100px;">
-	        <h:outputText value="#{goods.taobaoName}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.taobaoName}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.taobaoName}" style="width:96%" label="淘宝商品名"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="销售属性" sortBy="xiaoshou_shuxing" style="width:50px;">
@@ -33,15 +39,24 @@
 	    </p:column>
 
 	    <p:column headerText="商品编码" sortBy="goods_code" style="width:50px;">
-	        <h:outputText value="#{goods.goodsCode}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.goodsCode}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.goodsCode}" style="width:96%" label="商品编码"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="条形码" sortBy="barcode" style="width:50px;">
-	        <h:outputText value="#{goods.barcode}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.barcode}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.barcode}" style="width:96%" label="条形码"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="类型" sortBy="goods_type_id" style="width:30px;">
-	        <h:outputText value="#{goods.goodsTypeId}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.goodsTypeId}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.goodsTypeId}" style="width:96%" label="类型"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
         <p:column headerText="规格" sortBy="capacity" style="width:30px;">
@@ -52,15 +67,24 @@
        </p:column>
 
 	    <p:column headerText="价格" sortBy="price" style="width:30px;">
-	        <h:outputText value="#{goods.price}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.price}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.price}" style="width:96%" label="价格"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="成本价" sortBy="chengbenjia" style="width:30px;">
-	        <h:outputText value="#{goods.chengbenjia}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.chengbenjia}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.chengbenjia}" style="width:96%" label="成本价"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="重量" sortBy="weight" style="width:30px;">
-	        <h:outputText value="#{goods.weight}" />
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.weight}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.weight}" style="width:96%" label="重量"/></f:facet>
+           </p:cellEditor>
 	    </p:column>
 
 	    <p:column headerText="商品简介" sortBy="summary" style="width:150px;">
