@@ -3,10 +3,18 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <p:outputPanel id="panel_goods" layout="block" rendered="#{not empty goodsBean.lazyModel}">
 
+   <p:contextMenu for="goodsTable" widgetVar="cMenu">
+       <p:menuitem value="Edit Cell" icon="ui-icon-search" onclick="PF('cellCars').showCellEditor();return false;"/>
+       <p:menuitem value="Hide Menu" icon="ui-icon-close" onclick="PF('cMenu').hide()"/>
+   </p:contextMenu>
+
 	<p:dataTable id="goodsTable" var="goods" value="#{goodsBean.lazyModel}" rows="20" paginator="true" lazy="true" selection="#{goodsBean.selectedGoodsList}" style="margin-bottom:0"
-	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100"
+	editable="true" editMode="cell" widgetVar="cellCars">
 
 		<p:column selectionMode="multiple" style = "width:16px;text-align:center" />
+
+		<p:ajax event="cellEdit" listener="#{goodsBean.onCellEdit}" />
 
 	    <p:column headerText="ID" sortBy="id" style="width:20px;">
 	        <h:outputText value="#{goods.id}" />
@@ -36,9 +44,12 @@
 	        <h:outputText value="#{goods.goodsTypeId}" />
 	    </p:column>
 
-	    <p:column headerText="规格" sortBy="capacity" style="width:30px;">
-	        <h:outputText value="#{goods.capacity}" />
-	    </p:column>
+        <p:column headerText="规格" sortBy="capacity" style="width:30px;">
+           <p:cellEditor>
+               <f:facet name="output"><h:outputText value="#{goods.capacity}" /></f:facet>
+               <f:facet name="input"><p:inputText value="#{goods.capacity}" style="width:96%" label="规格"/></f:facet>
+           </p:cellEditor>
+       </p:column>
 
 	    <p:column headerText="价格" sortBy="price" style="width:30px;">
 	        <h:outputText value="#{goods.price}" />

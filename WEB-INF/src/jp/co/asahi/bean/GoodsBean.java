@@ -21,6 +21,7 @@ import jp.co.asahi.service.impl.GoodsServiceImpl;
 import jp.co.asahi.util.DateUtil;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.LazyDataModel;
 
@@ -282,5 +283,20 @@ public class GoodsBean extends BaseBean {
 	public void setSelectedGoodsList(List<Goods> selectedGoodsList) {
 		this.selectedGoodsList = selectedGoodsList;
 	}
+
+	public void onCellEdit(CellEditEvent event) {
+
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if(newValue != null && !newValue.equals(oldValue)) {
+
+            Goods goods = lazyModel.getRowData();
+            if(goodsService.update(goods)) {
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Deta Update", String.format("代理【%s】数据更新成功。Old:【%s】， New：【%s】", goods.getName(), oldValue, newValue));
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            }
+        }
+    }
 
 }
