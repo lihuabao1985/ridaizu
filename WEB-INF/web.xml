@@ -34,7 +34,7 @@
 	<listener>
 		<listener-class>jp.co.asahi.listener.AsahiServletContextListener</listener-class>
 	</listener>
-
+ 
 	<!-- filters -->
 	<filter>
 	  <filter-name>global</filter-name>
@@ -44,29 +44,6 @@
 	  <filter-name>global</filter-name>
 	  <url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-	<!-- 用户登录过滤器开始
-	<filter>
-		<filter-name>checkLoginFilter</filter-name>
-		<filter-class>jp.co.asahi.filter.CheckLoginFilter</filter-class>
-		<init-param>
-			<param-name>checkSessionKey</param-name>
-			<param-value>LoginUser</param-value>
-		</init-param>
-		<init-param>
-			<param-name>redirectURL</param-name>
-			<param-value>/faces/index.xhtml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>notCheckURLList</param-name>
-			<param-value>/faces/index.xhtml</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>checkLoginFilter</filter-name>
-		<url-pattern>*.xhtml</url-pattern>
-	</filter-mapping>
-	 用户登录过滤器结束 -->
 
 	<!-- JSF mapping -->
 	<servlet>

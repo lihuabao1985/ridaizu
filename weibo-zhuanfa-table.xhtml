@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<p:outputPanel id="panel_weiboZhuanfa" layout="block" rendered="#{not empty weiboZhuanfaBean.lazyModel}">
+
+	<p:dataTable id="weiboZhuanfaTable" var="weiboZhuanfa" value="#{weiboZhuanfaBean.lazyModel}" rows="20" paginator="true" lazy="true" style="margin-bottom:0"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="20,50,100">
+
+	    <p:column style="width:40px;text-align: center">
+	        <p:commandButton title="更新" actionListener="#{weiboZhuanfaBean.viewWeiboZhuanfa(weiboZhuanfa)}" ajax="true" icon="ui-icon-search">
+				<p:ajax event="dialogReturn" listener="#{weiboZhuanfaBean.updateWeiboZhuanfaResult}" update="weiboZhuanfaTable" />
+			</p:commandButton>
+	    </p:column>
+
+	    <p:column headerText="ID" sortBy="id" style="width:20px;">
+	        <h:outputText value="#{weiboZhuanfa.id}" />
+	    </p:column>
+
+	    <p:column headerText="微博ID" sortBy="weibo_id" style="width:75px;">
+	        <h:outputText value="#{weiboZhuanfa.weiboId}" />
+	    </p:column>
+
+	    <p:column headerText="微博名" sortBy="weibo_name" style="width:40px;">
+	        <h:outputText value="#{weiboZhuanfa.weiboName}" />
+	    </p:column>
+
+	    <p:column headerText="转发数" sortBy="zhuanfa_count" style="width:30px;">
+	        <h:outputText value="#{weiboZhuanfa.zhuanfaCount}" />
+	    </p:column>
+
+	    <p:column headerText="微博折扣" style="width:30px;">
+	        <h:outputText value="#{weiboZhuanfa.discount}" />
+	    </p:column>
+
+	</p:dataTable>
+</p:outputPanel>
+</ui:composition>

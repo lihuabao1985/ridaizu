@@ -11,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jp.co.asahi.common.Common;
 import jp.co.asahi.config.Config;
@@ -36,13 +37,17 @@ public class GlobalFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest request = (HttpServletRequest)req;
-		HttpServletResponse response = (HttpServletResponse)res;
-
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpSession session = request.getSession();
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", -1);
+        
 		String requestUrl = request.getRequestURI();
 		//Staticファイルをスキップする
 		if(requestUrl.indexOf("/global/")>-1 || requestUrl.indexOf("/images/")>-1 || requestUrl.indexOf("/js/")>-1
-				|| requestUrl.indexOf("/css/")>-1 || requestUrl.indexOf("/javax.faces.resource/")>-1 ){
+				|| requestUrl.indexOf("/css/")>-1 || requestUrl.indexOf("/javax.faces.resource/")>-1 || requestUrl.indexOf("login.xhtml")>-1 ){
 			chain.doFilter(req, res);
 			return;
 		}
@@ -50,11 +55,14 @@ public class GlobalFilter implements Filter {
 		String remoteIp = Common.getRemoteAddress(request);
 		systemLogger.debug(String.format(LOG_FORMAT, request.getServletPath(), request.getPathInfo(), remoteIp));
 
-//        if (!SamlClientServlet.isPrepared(request, response)) {
-//            return;
-//        }
-
 		try{
+
+	        Object loginInfo = session.getAttribute("user");
+	        if (loginInfo == null || "".equals(loginInfo)) {
+	            response.sendRedirect(Config.getString("NOT_ALLOW_REDIRECT_URL"));
+	            return ;
+	        }
+	        
 //			if (!allowRemoteIpList.isAllow(remoteIp)) {
 //				response.sendRedirect(NOT_ALLOW_REDIRECT_URL);
 //				return;

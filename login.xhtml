@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>用户登录</title>
+		<style type="text/css">
+.ui-widget {
+	font-size: 90%;
+}
+</style>
+	</h:head>
+
+
+	<h:form id="form_login">
+		<p:messages id="messages" autoUpdate="true" closable="true" display="tooltip" />
+		<p:panelGrid id="panelGridLogin">
+			<p:row>
+				<p:column>用户名:</p:column>
+				<p:column>
+					<p:inputText id="username" value="#{loginForm.username}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>密 码:</p:column>
+				<p:column>
+					<p:password id="password" value="#{loginForm.password}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+					<p:commandButton value="登录" ajax="false" actionListener="#{loginBean.login}" 
+					action="#{loginBean.redirectPage}"/>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</h:form>
+</ui:composition>
